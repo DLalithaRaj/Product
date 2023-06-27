@@ -1,0 +1,1 @@
+//To define the object type and interfaces

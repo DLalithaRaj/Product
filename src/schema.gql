@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateProduct {
+  Description: String!
+
+  """Prouct unique code"""
+  Id: Int!
+
+  """Name of the product"""
+  Name: String!
+  Rate: Int!
+}
+
+type Mutation {
+  createProduct(productIP: CreateProduct!): Product!
+}
+
+type Product {
+  Description: String!
+
+  """Prouct unique code"""
+  Id: Int!
+
+  """Name of the product"""
+  Name: String!
+  Rate: Int!
+}
+
+type Query {
+  sayhi: String!
+}
