@@ -2,32 +2,64 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreateProduct {
-  Description: String!
-
-  """Prouct unique code"""
-  Id: Int!
+input CreateProductInput {
+  category: String!
+  description: String! = ""
+  expired: DateTime!
+  manufacture: String! = ""
 
   """Name of the product"""
-  Name: String!
-  Rate: Int!
+  name: String!
+  price: Int!
+
+  """Prouct unique code"""
+  productId: Int!
+  status: Boolean!
 }
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Mutation {
-  createProduct(productIP: CreateProduct!): Product!
+  createProduct(productIP: CreateProductInput!): Product!
+  updateProduct(updateProduct: UpdateProductInput!): Product!
 }
 
 type Product {
-  Description: String!
-
-  """Prouct unique code"""
-  Id: Int!
+  category: String!
+  description: String!
+  expired: DateTime!
+  id: String!
+  manufacture: String!
 
   """Name of the product"""
-  Name: String!
-  Rate: Int!
+  name: String!
+  price: Int!
+
+  """Prouct unique code"""
+  productId: Int!
+  status: Boolean!
 }
 
 type Query {
+  products: [Product!]!
   sayhi: String!
+}
+
+input UpdateProductInput {
+  category: String
+  description: String = ""
+  expired: DateTime
+  id: String!
+  manufacture: String = ""
+
+  """Name of the product"""
+  name: String
+  price: Int
+
+  """Prouct unique code"""
+  productId: Int
+  status: Boolean
 }
