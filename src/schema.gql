@@ -41,6 +41,7 @@ scalar DateTime
 
 type Mutation {
   createProduct(data: CreateProduct!): CreateProductOutput!
+  deleteProduct(id: String!): Boolean!
   updateProduct(id: String!, input: CreateProduct!): UpdateProductOutput!
 }
 

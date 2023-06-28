@@ -69,3 +69,8 @@ export class UpdateProductOutput {
   @Field((type) => Boolean, {})
     status: boolean;
 }
+
+export class DeleteProductInput {
+  @Field(type => Int)
+  productId: number;
+}

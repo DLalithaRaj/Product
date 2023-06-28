@@ -3,7 +3,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateProductOutput } from './product.output';
 import { CreateProduct } from './product.input';
 import { ProductService } from '../product.service';
-import { UpdateProductOutput } from './product.output';
+import { UpdateProductOutput ,DeleteProductInput} from './product.output';
 
 
 @Resolver()
@@ -27,5 +27,12 @@ export class ProductResolver {
   @Mutation(() => UpdateProductOutput)
   async updateProduct(@Args('id') id: string, @Args('input') product: CreateProduct) {
     return this.ProductService.updateProduct(id, product);
+  }
+
+
+  @Mutation(() => Boolean)
+  async deleteProduct(@Args('id') id: string) {
+    await this.ProductService.deleteProduct(id);
+    return true;
   }
 }
