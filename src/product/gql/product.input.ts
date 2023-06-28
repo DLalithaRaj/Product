@@ -1,7 +1,7 @@
 import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class CreateProductInput {
+export class CreateProduct {
   @Field(() => Int, {
     nullable: false,
     description: 'Product unique code',
@@ -27,7 +27,7 @@ export class CreateProductInput {
 }
 
 @InputType()
-export class UpdateProductInput extends PartialType(CreateProductInput) {
+export class UpdateProduct extends PartialType(CreateProduct) {
   @Field(() => String)
   id: string;
 }
