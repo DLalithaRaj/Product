@@ -7,8 +7,8 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class ProductService {
-  constructor(@InjectModel('Product') private productModel:Model<IProduct>){}
-  async create(createProductDto: CreateProductDTO):Promise<IProduct> {
+  constructor(@InjectModel('Product') private productModel: Model<IProduct>) {}
+  async create(createProductDto: CreateProductDTO): Promise<IProduct> {
     try {
       const product = new this.productModel(createProductDto);
       return await product.save();
@@ -21,8 +21,6 @@ export class ProductService {
     return `This action returns all product`;
   }
 
-  
-
   async findOne(id: string): Promise<IProduct> {
     const product = await this.productModel.findById(id).exec();
     if (!product) {
@@ -31,18 +29,22 @@ export class ProductService {
     return product;
   }
 
-
-  async updateProduct(
-    id: string,
-    updateProductDto: CreateProductDTO,
-  ): Promise<IProduct> {
-    const product = await this.productModel
-      .findByIdAndUpdate(id, updateProductDto, { new: true })
-      .exec();
-    if (!product) {
-      throw new NotFoundException('Product not found');
-    }
-    return product;
+  // async updateProduct(
+  //   id: string,
+  //   updateProductDto: CreateProductDTO,
+  // ): Promise<IProduct> {
+  //   const product = await this.productModel
+  //     .findByIdAndUpdate(id, updateProductDto, { new: true })
+  //     .exec();
+  //   if (!product) {
+  //     throw new NotFoundException('Product not found');
+  //   }
+  //   return product;
+  // }
+  update(id: string, updateProductDto: UpdateProductDTO) {
+    return this.productModel.findByIdAndUpdate(id, updateProductDto, {
+      new: true,
+    });
   }
 
   async deleteProduct(id: string): Promise<boolean> {

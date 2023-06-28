@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreateProduct {
+input CreateProductInput {
   category: String!
   description: String!
   expired: DateTime!
@@ -12,7 +12,7 @@ input CreateProduct {
   name: String!
   price: Float!
 
-  """Prouct unique code"""
+  """Product unique code"""
   productId: Int!
   status: Boolean!
 }
@@ -40,9 +40,9 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
-  createProduct(data: CreateProduct!): CreateProductOutput!
+  createProduct(data: CreateProductInput!): CreateProductOutput!
   deleteProduct(id: String!): Boolean!
-  updateProduct(id: String!, input: CreateProduct!): UpdateProductOutput!
+  updateProduct(data: UpdateProductInput!): UpdateProductOutput!
 }
 
 type Query {
@@ -50,15 +50,34 @@ type Query {
   sayhi: String!
 }
 
+input UpdateProductInput {
+  category: String
+  description: String
+  expired: DateTime
+  id: String!
+  manufacture: String
+
+  """Name of the product"""
+  name: String
+  price: Float
+
+  """Product unique code"""
+  productId: Int
+  status: Boolean
+}
+
 type UpdateProductOutput {
   category: String!
   description: String!
   expired: DateTime!
+  id: String!
   manufacture: String!
-  name: String!
-  price: Float!
 
-  """Prouct unique code"""
+  """Name of the product"""
+  name: String!
+  price: Int!
+
+  """Product unique code"""
   productId: Int!
   status: Boolean!
 }
