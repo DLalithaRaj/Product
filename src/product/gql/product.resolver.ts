@@ -1,14 +1,12 @@
-
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateProductOutput } from './product.output';
-import { CreateProduct } from './product.input';
+import { CreateProductInput, UpdateProductInput } from './product.input';
 import { ProductService } from '../product.service';
 import { UpdateProductOutput } from './product.output';
 
-
 @Resolver()
 export class ProductResolver {
-  constructor (private ProductService:ProductService){}
+  constructor(private productService: ProductService) {}
   @Query(() => String)
   sayhi() {
     return 'Hi';
@@ -16,16 +14,32 @@ export class ProductResolver {
 
   @Query(() => CreateProductOutput)
   async getProduct(@Args('id') id: string) {
-    return this.ProductService.findOne(id);
+    return this.productService.findOne(id);
   }
 
-  @Mutation(() => CreateProductOutput )
-  async createProduct(@Args('data') product: CreateProduct) {
-    return this.ProductService.create(product);
+  @Mutation(() => CreateProductOutput)
+  async createProduct(@Args('data') product: CreateProductInput) {
+    return this.productService.create(product);
   }
 
+  // @Mutation(() => UpdateProductOutput)
+  // async updateProduct(
+  //   @Args('id') id: string,
+  //   @Args('input') product: CreateProduct,
+  // ) {
+  //   return this.ProductService.updateProduct(id, product);
+  // }
   @Mutation(() => UpdateProductOutput)
-  async updateProduct(@Args('id') id: string, @Args('input') product: CreateProduct) {
-    return this.ProductService.updateProduct(id, product);
+  updateProduct(@Args('data') product: UpdateProductInput) {
+    return this.productService.update(product.id, {
+      category: product.category,
+      description: product.description,
+      expired: product.expired,
+      manufacture: product.manufacture,
+      name: product.name,
+      price: product.price,
+      productId: product.productId,
+      status: product.status,
+    });
   }
 }
