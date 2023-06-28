@@ -16,6 +16,32 @@ input CreateProduct {
 }
 
 type CreateProductOutput {
+  """Product _id"""
+  _id: String!
+  category: String!
+  description: String!
+  expired: DateTime!
+  manufacture: String!
+  name: String!
+  price: Float!
+
+  """Product unique code"""
+  productId: Int!
+  status: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createProduct(data: CreateProduct!): CreateProductOutput!
+  updateProduct(id: String!, input: CreateProduct!): UpdateProductOutput!
+=======
+}
+
+type CreateProductOutput {
   """Prouct _id"""
   _id: String!
   category: String!
@@ -40,5 +66,19 @@ type Mutation {
 }
 
 type Query {
+  getProduct(id: String!): CreateProductOutput!
   sayhi: String!
+}
+
+type UpdateProductOutput {
+  category: String!
+  description: String!
+  expired: DateTime!
+  manufacture: String!
+  name: String!
+  price: Float!
+
+  """Prouct unique code"""
+  productId: Int!
+  status: Boolean!
 }

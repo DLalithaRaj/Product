@@ -2,6 +2,7 @@ import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class CreateProductOutput {
+
   @Field((type) => String, {
     nullable: false,
     description: 'Prouct _id',
@@ -26,12 +27,17 @@ export class CreateProductOutput {
         nullable : false,
     })
     price : number;
-    @Field((type) => String, {})
+   
+    @Field(type => String, {})
     manufacture: string;
-    @Field((type) => String, {})
-    category: string;
-    @Field((type) => Date, {})
-    expired: Date;
-    @Field((type) => Boolean, {})
-    status: boolean;
+
+   @Field(type => String, {})
+   category: string;
+
+   @Field(type => Date, {})
+   expired: Date;
+
+   @Field(type => Boolean, {})
+   status: boolean;
+
 }
