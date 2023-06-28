@@ -14,11 +14,11 @@ export class CreateProduct {
       @Field((type) => Number, {})
         price: number;
       @Field((type) => String, {})
-        manufacture: string;
+        manufacture?: string;
       @Field((type) => String, {})
-        category: string;
+        category?: string;
       @Field((type) => Date, {})
-        expired: Date;
+        expired?: Date;
       @Field((type) => Boolean, {})
-        status: boolean;
+        status?: boolean;
 }

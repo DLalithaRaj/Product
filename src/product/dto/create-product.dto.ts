@@ -4,8 +4,8 @@ export interface CreateProductDTO{
     name: string;
     description:string;
     price:number;
-    manufacture:string;
-    category:string; 
-    expired:Date;
-    status:boolean;
+    manufacture?:string;
+    category?:string; 
+    expired?:Date;
+    status?:boolean;
 }

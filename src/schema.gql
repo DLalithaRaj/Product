@@ -16,7 +16,7 @@ input CreateProduct {
 }
 
 type CreateProductOutput {
-  """Prouct _id"""
+  """Product _id"""
   _id: String!
   category: String!
   description: String!
@@ -25,7 +25,7 @@ type CreateProductOutput {
   name: String!
   price: Float!
 
-  """Prouct unique code"""
+  """Product unique code"""
   productId: Int!
   status: Boolean!
 }
@@ -37,8 +37,23 @@ scalar DateTime
 
 type Mutation {
   createProduct(data: CreateProduct!): CreateProductOutput!
+  updateProduct(id: String!, input: CreateProduct!): UpdateProductOutput!
 }
 
 type Query {
+  getProduct(id: String!): CreateProductOutput!
   sayhi: String!
+}
+
+type UpdateProductOutput {
+  category: String!
+  description: String!
+  expired: DateTime!
+  manufacture: String!
+  name: String!
+  price: Float!
+
+  """Prouct unique code"""
+  productId: Int!
+  status: Boolean!
 }
