@@ -1,6 +1,6 @@
+import { Document } from 'mongoose';
 
-export interface UpdateProductDTO{
-    _id:string;
+export interface IProduct extends Document{
     productId: number;
     name: string;
     description:string;
