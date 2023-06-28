@@ -12,18 +12,26 @@ export class CreateProductOutput {
     description: 'Prouct unique code',
   })
     productId: number;
-  @Field((type) => String, {})
-    name: string;
-  @Field((type) => String, {})
-    description: string;
-  @Field((type) => Number, {})
-    price: number;
-  @Field((type) => String, {})
+  @Field(type=>String,
+        {
+        nullable :false,
+        description : 'Name of the product',
+    })
+    name : string;
+
+    @Field(type=>String)
+    description? : string;
+
+    @Field(type => Int,{
+        nullable : false,
+    })
+    price : number;
+    @Field((type) => String, {})
     manufacture: string;
-  @Field((type) => String, {})
+    @Field((type) => String, {})
     category: string;
-  @Field((type) => Date, {})
+    @Field((type) => Date, {})
     expired: Date;
-  @Field((type) => Boolean, {})
+    @Field((type) => Boolean, {})
     status: boolean;
 }
