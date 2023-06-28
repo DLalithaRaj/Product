@@ -1,16 +1,18 @@
 import { Args, Mutation, Parent, Query, Resolver } from '@nestjs/graphql';
-import { Product } from './product.output';
+import { CreateProductOutput } from './product.output';
 import { CreateProduct } from './product.input';
+import { ProductService } from './product.service';
 
 @Resolver()
 export class ProductResolver {
+  constructor (private ProductService:ProductService){}
   @Query(() => String)
   sayhi() {
     return 'Hi';
   }
 
-  @Mutation(returns => Product )
-  async createProduct(@Args('productIP') product: CreateProduct) {
-    return product;
+  @Mutation(returns => CreateProductOutput )
+  async createProduct(@Args('data') product: CreateProduct) {
+    return this.ProductService.create(product);
   }
 }
