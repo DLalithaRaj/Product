@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductModule } from './product/product.module';
+import { ProductModule } from './modules/product/product.module';
 import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
 
