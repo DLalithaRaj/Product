@@ -22,10 +22,12 @@ export class ProductController {
   //   return this.productService.findOne(+id);
   // }
 
+
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDTO) {
   //   return this.productService.update(+id, updateProductDto);
   // }
+
 
   @Delete(':id')
   remove(@Param('id') id: string) {

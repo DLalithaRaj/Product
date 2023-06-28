@@ -31,6 +31,7 @@ export class ProductService {
     return product;
   }
 
+
   async updateProduct(
     id: string,
     updateProductDto: CreateProductDTO,
