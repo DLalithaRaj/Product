@@ -5,7 +5,7 @@ export class CreateProductOutput {
 
   @Field((type) => String, {
     nullable: false,
-    description: 'Prouct _id',
+    description: 'Prouct_id',
   })
     _id: number;
   @Field((type) => Int, {
