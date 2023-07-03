@@ -35,7 +35,7 @@ describe('ProductResolver', () => {
         status: true,
       };
 
-      const outputProduct = {
+      const outputProduct:CreateProductOutput = {
         _id: 6712359371231,
         productId: 453423,
         name: 'dairy milk',
