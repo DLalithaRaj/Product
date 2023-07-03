@@ -1,4 +1,12 @@
-## Module Architecture
+# Module Architecture
+## Microservices
+
+### .env
+Environmental variables for current microservice api are configured.Every microservices-> .env file contains its own port value and other configurable environmental values. 
+
+### main
+In main.ts file respective microservice applications are started with configured port number.Middleware for this specific microservice is applied in this main.ts file.
+
 ### controller
 Controllers are entry point for the Rest API.Controllers handling the incoming requests and returning responses to client.We can validate the authorization and input params in controllers before initiating the further process.Incoming requests are handled by respective REST methods like POST,GET,PUT,DELETE.
 
