@@ -27,6 +27,11 @@ export class ProductService {
     return await this.productRepository.updateProduct(updateProductDto);
   }
 
+  async deleteProduct(id: string): Promise<string> {
+    const deleted = this.productRepository.deleteProduct(id);
+    return deleted ? `Product with id ${id} has been deleted successfully` : 'Something Went wrong';
+  }
+
   remove(id: number) {
     return `This action removes a #${id} product`;
   }

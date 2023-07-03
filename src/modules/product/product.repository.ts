@@ -52,5 +52,13 @@ export class ProductRepository {
   
           return product;
       }
+
+      async deleteProduct(id: string):Promise<boolean>{
+        const product = await this.product.findByIdAndDelete(id).exec();
+        if (!product) {
+        throw new NotFoundException('Product not found');
+        }
+        return true;
+      }
           
     }
