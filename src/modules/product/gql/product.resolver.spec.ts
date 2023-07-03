@@ -1,20 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProductResolver } from './product.resolver';
 import { ProductService } from '../product.service';
-import { CreateProductDTO } from '../dto/create-product.dto';
-import { IProduct } from '../product.interface';
 import { CreateProductInput } from './product.input';
-import { CreateProductOutput } from './product.output';
+import { ProductOutput } from './product.output';
+import { IProduct } from '../product.interface';
 
 describe('ProductResolver', () => {
   let resolver: ProductResolver;
-  let service: ProductService
+  let service: ProductService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ProductResolver,ProductService, {
-        provide: 'ProductModel',
-        useValue: {},
+      providers: [ProductResolver,{
+        provide:ProductService,
+        useValue:{}
       }],
     }).compile();
     
@@ -35,7 +34,7 @@ describe('ProductResolver', () => {
         status: true,
       };
 
-      const outputProduct:CreateProductOutput = {
+      const outputProduct = {
         _id: 6712359371231,
         productId: 453423,
         name: 'dairy milk',
@@ -47,7 +46,7 @@ describe('ProductResolver', () => {
         status: true,
       };
 
-      jest.spyOn(service, 'create').mockResolvedValue(outputProduct as IProduct);
+      jest.spyOn(service, 'create').mockResolvedValue(outputProduct);
 
       const result = await resolver.createProduct(createProduct);
 

@@ -5,7 +5,7 @@ import { CreateProductDTO } from './dto/create-product.dto';
 
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+   constructor(private readonly productService: ProductService) {}
 
   @Post()
   create(@Body() createProductDto:CreateProductDTO ) {
@@ -21,4 +21,4 @@ export class ProductController {
   remove(@Param('id') id: string) {
     return this.productService.remove(+id);
   }
-}
+ }
