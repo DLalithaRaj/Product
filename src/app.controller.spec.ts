@@ -1,24 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MongoMemoryServer } from "mongodb-memory-server";
-import { Connection, connect, Model } from "mongoose";
+import { Connection, connect, Model } from 'mongoose';
 import { Product } from './modules/product/models/product.model';
 import { getModelToken } from '@nestjs/mongoose';
 
 describe('AppController', () => {
   let appController: AppController;
-  let mongod: MongoMemoryServer;
   let mongoConnection: Connection;
   let product: Model<Product>;
 
   beforeAll(async () => {
-    mongod = await MongoMemoryServer.create();
-    mongoConnection = (await connect('mongodb://127.0.0.1:27017/store')).connection;
+    mongoConnection = (await connect('mongodb://127.0.0.1:27017/store'))
+      .connection;
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService,
-        {provide: getModelToken(Product.name), useValue: product}],
+      providers: [
+        AppService,
+        { provide: getModelToken(Product.name), useValue: product },
+      ],
     }).compile();
 
     appController = app.get<AppController>(AppController);
@@ -27,7 +27,6 @@ describe('AppController', () => {
   afterAll(async () => {
     await mongoConnection.dropDatabase();
     await mongoConnection.close();
-    await mongod.stop();
   });
 
   afterEach(async () => {
