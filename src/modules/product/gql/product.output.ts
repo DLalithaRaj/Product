@@ -4,7 +4,7 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 export class ProductOutput {
   @Field(() => String, {
     nullable: false,
-    description: 'Prouct _id',
+    description: 'Prouct_id',
   })
   _id: number;
 

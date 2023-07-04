@@ -10,6 +10,7 @@ import {
 import { ProductService } from './product.service';
 import { UpdateProductDTO } from './dto/update-product.dto';
 import { CreateProductDTO } from './dto/create-product.dto';
+import { IUpdateProduct } from './product.interface';
 
 @Controller('product')
 export class ProductController {
@@ -24,10 +25,20 @@ export class ProductController {
   findAll() {
     return this.productService.findAll();
   }
-
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.productService.getProductById(id);
+  }
+  @Patch(':id')
+  updateProduct(@Body() body: IUpdateProduct, @Param('id') id: string) {
+    return this.productService.updateProduct({
+      ...body,
+      _id: id,
+    });
+  }
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.productService.remove(id);
+    return this.productService.deleteProduct(id);
   }
 
   @Patch()
