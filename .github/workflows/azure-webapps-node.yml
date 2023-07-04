@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: FOCUS_POC # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'drop' # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '18.x' # set this to the node version to use
+  AZURE_WEBAPP_NAME: FOCUS_POC
+  #AZURE_WEBAPP_PACKAGE_PATH: 'drop' 
+  NODE_VERSION: '18.x' 
 
 permissions:
   contents: read
@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: drop
+          path: testfile
 #   deploy:
 #     permissions:
 #       contents: none
