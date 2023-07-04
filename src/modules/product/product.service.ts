@@ -19,7 +19,10 @@ export class ProductService {
     return await this.productRepository.getProductById(id);
   }
 
-  async updateProduct(updateProductDto: IUpdateProduct): Promise<IProduct> {
+
+  async updateProduct(
+    updateProductDto: IUpdateProduct,
+  ): Promise<IProduct> {
     return await this.productRepository.updateProduct(updateProductDto);
   }
 
