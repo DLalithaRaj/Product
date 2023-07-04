@@ -114,13 +114,13 @@ describe('ProductController', () => {
   describe('delete product', () => {
     it('delete product with id', async () => {
       const id = '1387219712wer387236';
-      const outputDeleteProduct = `Product with id ${id} has been deleted successfully`;
+      const output = `Product with id ${id} has been deleted successfully`;
       jest
         .spyOn(productService, 'deleteProduct')
-        .mockResolvedValue(outputDeleteProduct);
+        .mockResolvedValue(output);
       const result = await controller.remove(id);
       expect(productService.deleteProduct).toHaveBeenCalledWith(id);
-      expect(result).toEqual(outputDeleteProduct);
+      expect(result).toEqual(output);
     });
   });
 });

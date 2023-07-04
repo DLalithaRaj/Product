@@ -18,6 +18,12 @@ describe('ProductService', () => {
             getProductById: jest
               .fn()
               .mockImplementation((IProduct) => IProduct),
+            updateProduct: jest
+              .fn()
+              .mockImplementation((IProduct) => IProduct),
+            deleteProduct: jest
+              .fn()
+              .mockImplementation((IProduct) => IProduct)
           },
         },
       ],
@@ -48,6 +54,30 @@ describe('ProductService', () => {
       expect(repository.getProductById).toBeCalled();
       expect(repository.getProductById).toBeCalledWith(id);
       expect(result).toEqual(outputProduct);
+    });
+  });
+
+  describe('update', () => {
+    it('should update a  product', async () => {
+      jest
+        .spyOn(repository, 'updateProduct')
+        .mockResolvedValueOnce(outputProduct as IProduct);
+      const result = await service.updateProduct(outputProduct);
+      expect(repository.updateProduct).toBeCalled();
+      expect(repository.updateProduct).toBeCalledWith(outputProduct);
+      expect(result).toEqual(outputProduct);
+    });
+  });
+  describe('delete product', () => {
+    it('should delete a product by id', async () => {
+      const id = 'hq6712359371231';
+      const output = `Product with id ${id} has been deleted successfully`;
+      jest
+        .spyOn(repository, 'deleteProduct')
+        .mockResolvedValueOnce(true);
+      const result = await service.deleteProduct(id);
+      expect(repository.deleteProduct).toBeCalledWith(id);
+      expect(result).toEqual(output);
     });
   });
 });
