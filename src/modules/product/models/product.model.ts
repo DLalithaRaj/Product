@@ -1,28 +1,23 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-
-
 @Schema()
 export class Product {
-  static productId(productId: any) {
-    throw new Error('Method not implemented.');
-  }
-  @Prop({ required: true,unique: true })
+  @Prop({ required: true, unique: true })
   productId: number;
 
-  @Prop({ required: true, minlength : 2, maxlength : 100 })
+  @Prop({ required: true, minlength: 2, maxlength: 100 })
   name: string;
 
-  @Prop({trim: true})
+  @Prop({ trim: true })
   description: string;
 
-  @Prop({ required: true, min:1 })
+  @Prop({ required: true, min: 1 })
   price: number;
 
   @Prop()
   manufacture: string;
 
-  @Prop({default : 'veg',enum: ['veg','non-veg']})
+  @Prop({ default: 'veg', enum: ['veg', 'non-veg'] })
   category: string;
 
   @Prop({ required: true })

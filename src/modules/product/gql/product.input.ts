@@ -3,56 +3,54 @@ import { Field, InputType, Int } from '@nestjs/graphql';
 @InputType()
 export class CreateProductInput {
 
-      @Field((type) => Int, {
+      @Field(() => Int, {
         nullable: false,
         description: 'Prouct unique code',
       })
         productId: number;
-     @Field(type=>String,
+     @Field(()=>String,
         {
         nullable :false,
         description : 'Name of the product',
       })
       name : string;
-      @Field((type) => String, {})
+      @Field(() => String, {})
         description: string;
-      @Field((type) => Number, {nullable : false,})
+      @Field(() => Number, {nullable : false,})
         price: number;
-      @Field((type) => String, {})
+      @Field(() => String, {})
         manufacture?: string;
-      @Field((type) => String, {})
+      @Field(() => String, {})
         category?: string;
-      @Field((type) => Date, {})
+      @Field(() => Date, {})
         expired?: Date;
-      @Field((type) => Boolean, {})
+      @Field(() => Boolean, {})
         status?: boolean;
 }
 
 @InputType()
 export class UpdateProduct {
+  @Field(() => Int, {
+    nullable: false,
+    description: 'Prouct unique code',
+  })
+  productId?: number;
 
-      @Field((type) => Int, {
-        nullable: false,
-        description: 'Prouct unique code',
-      })
-        productId?: number;
-
-     @Field(type=>String,
-        {
-        nullable :false,
-        description : 'Name of the product',
-      })
-      name? : string;
-      @Field((type) => String, {})
-        description?: string;
-      @Field((type) => Number, {nullable : false,})
-        price?: number;
-      @Field((type) => String, {})
-        manufacture?: string;
-      @Field((type) => String, {})
-        category?: string;
-      @Field((type) => Date, {})
-        expired?: Date;
-      @Field((type) => Boolean, {})
-        status?: boolean;
+  @Field(() => String, {
+    nullable: false,
+    description: 'Name of the product',
+  })
+  name?: string;
+  @Field(() => String, {})
+  description?: string;
+  @Field(() => Number, { nullable: false })
+  price?: number;
+  @Field(() => String, {})
+  manufacture?: string;
+  @Field(() => String, {})
+  category?: string;
+  @Field(() => Date, {})
+  expired?: Date;
+  @Field(() => Boolean, {})
+  status?: boolean;
 }

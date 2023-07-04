@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { IUpdateProduct, IProduct } from './product.interface';
 import { CreateProductDTO } from './dto/create-product.dto';
 import { ProductRepository } from './product.repository';
@@ -8,7 +8,7 @@ export class ProductService {
   constructor(private productRepository: ProductRepository) {}
 
   async create(createProductDto: CreateProductDTO): Promise<IProduct> {
-      return this.productRepository.createProduct(createProductDto);
+    return this.productRepository.createProduct(createProductDto);
   }
 
   findAll() {
@@ -16,7 +16,7 @@ export class ProductService {
   }
 
   async getProductById(id: string): Promise<IProduct> {
-   return await this.productRepository.getProductById(id);
+    return await this.productRepository.getProductById(id);
   }
 
 
@@ -28,10 +28,12 @@ export class ProductService {
 
   async deleteProduct(id: string): Promise<string> {
     const deleted = this.productRepository.deleteProduct(id);
-    return deleted ? `Product with id ${id} has been deleted successfully` : 'Something Went wrong';
+    return deleted
+      ? `Product with id ${id} has been deleted successfully`
+      : 'Something Went wrong';
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} product`;
   }
 }

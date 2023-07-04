@@ -11,16 +11,19 @@ describe('ProductResolver', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ProductResolver,{
-        provide:ProductService,
-        useValue:{
-          create:jest.fn().mockImplementation(() => ProductOutput)
-        }
-      }],
+      providers: [
+        ProductResolver,
+        {
+          provide: ProductService,
+          useValue: {
+            create: jest.fn().mockImplementation(() => ProductOutput),
+          },
+        },
+      ],
     }).compile();
-    
-     resolver = module.get<ProductResolver>(ProductResolver);
-     service = module.get<ProductService>(ProductService);
+
+    resolver = module.get<ProductResolver>(ProductResolver);
+    service = module.get<ProductService>(ProductService);
   });
 
   describe('createProduct', () => {
@@ -37,7 +40,7 @@ describe('ProductResolver', () => {
       };
 
       const outputProduct = {
-        _id: "6712359371231",
+        _id: '6712359371231',
         productId: 453423,
         name: 'dairy milk',
         description: 'chco melted cholacate',
@@ -48,7 +51,9 @@ describe('ProductResolver', () => {
         status: true,
       };
 
-      jest.spyOn(service, 'create').mockResolvedValue(outputProduct as IProduct);
+      jest
+        .spyOn(service, 'create')
+        .mockResolvedValue(outputProduct as IProduct);
 
       const result = await resolver.createProduct(createProduct);
 
