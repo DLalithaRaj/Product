@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input CreateProduct {
+input CreateProductInput {
   category: String!
   description: String!
   expired: DateTime!
@@ -23,12 +23,13 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Mutation {
-  createProduct(data: CreateProduct!): ProductOutput!
+  createProduct(data: CreateProductInput!): ProductOutput!
+  deleteProduct(id: String!): String!
   updateProduct(id: String!, input: UpdateProduct!): ProductOutput!
 }
 
 type ProductOutput {
-  """Prouct _id"""
+  """Prouct_id"""
   _id: String!
   category: String!
   description: String!

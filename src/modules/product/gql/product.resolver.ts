@@ -21,7 +21,7 @@ export class ProductResolver {
 
   @Mutation(() => ProductOutput)
   async updateProduct(@Args('id') id: string, @Args('input') product: UpdateProduct) {
-    return this.ProductService.updateProduct(id, product);
+    return this.ProductService.updateProduct({...product, _id: id});
   }
 
   @Mutation(() => String)

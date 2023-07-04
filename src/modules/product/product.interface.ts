@@ -1,8 +1,7 @@
 import { Product } from './models/product.model';
-//import { Document } from 'mongoose';
+import { Document } from 'mongoose';
 
 export interface IProduct{
-//export interface IProduct{  
     _id?:string;  
     productId: number;
     name: string;

@@ -21,7 +21,6 @@ export class ProductService {
 
 
   async updateProduct(
-    id: string,
     updateProductDto: IUpdateProduct,
   ): Promise<IProduct> {
     return await this.productRepository.updateProduct(updateProductDto);

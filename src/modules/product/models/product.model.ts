@@ -4,6 +4,9 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class Product {
+  static productId(productId: any) {
+    throw new Error('Method not implemented.');
+  }
   @Prop({ required: true,unique: true })
   productId: number;
 
