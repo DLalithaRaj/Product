@@ -30,6 +30,6 @@ export class ProductResolver {
 
   @Mutation(() => String)
   async deleteProduct(@Args('id') id: string) {
-    return this.ProductService.deleteProduct(id);
+    return this.productService.deleteProduct(id);
   }
 }
