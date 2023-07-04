@@ -41,6 +41,8 @@ jobs:
         uses: actions/download-artifact@v3
         with: 
           name: node-app
+      - name: view artifact path
+        run: ls -R
 #   deploy:
 #     permissions:
 #       contents: none
