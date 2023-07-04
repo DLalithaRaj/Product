@@ -1,18 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Connection, connect, Model } from 'mongoose';
+import {
+  // Connection, connect,
+  Model,
+} from 'mongoose';
 import { Product } from './modules/product/models/product.model';
 import { getModelToken } from '@nestjs/mongoose';
 
 describe('AppController', () => {
   let appController: AppController;
-  let mongoConnection: Connection;
+  // let mongoConnection: Connection;
   let product: Model<Product>;
 
   beforeAll(async () => {
-    mongoConnection = (await connect('mongodb://127.0.0.1:27017/store'))
-      .connection;
+    // mongoConnection = (await connect('mongodb://127.0.0.1:27017/store'))
+    //   .connection;
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
       providers: [
@@ -25,16 +28,16 @@ describe('AppController', () => {
   });
 
   afterAll(async () => {
-    await mongoConnection.dropDatabase();
-    await mongoConnection.close();
+    // await mongoConnection.dropDatabase();
+    // await mongoConnection.close();
   });
 
   afterEach(async () => {
-    const collections = mongoConnection.collections;
-    for (const key in collections) {
-      const collection = collections[key];
-      await collection.deleteMany({});
-    }
+    // const collections = mongoConnection.collections;
+    // for (const key in collections) {
+    //   const collection = collections[key];
+    //   await collection.deleteMany({});
+    // }
   });
 
   describe('root', () => {
