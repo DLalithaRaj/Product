@@ -31,16 +31,21 @@ jobs:
           npm run lint --if-present
           npm run test --if-present
           npm run build --if-present
-
+          
+      - name: Zip artifact for deployment
+        run: zip nodeapp.zip ./* -r
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: ./
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with: 
-          name: node-app
+          path: nodeapp.zip
+          
+      #- name: Download artifact
+      #  uses: actions/download-artifact@v3
+      #  with: 
+      #    name: node-app
+      
       - name: view artifact path
         run: ls -R
 #   deploy:
