@@ -25,17 +25,9 @@ describe('AppController', () => {
   });
 
   afterAll(async () => {
-    await mongoConnection.dropDatabase();
     await mongoConnection.close();
   });
 
-  afterEach(async () => {
-    const collections = mongoConnection.collections;
-    for (const key in collections) {
-      const collection = collections[key];
-      await collection.deleteMany({});
-    }
-  });
 
   describe('root', () => {
     it('should return "Hello World!"', () => {

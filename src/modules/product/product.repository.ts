@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateProductDTO } from './dto/create-product.dto';
 import { Product } from './models/product.model';
 import { Model } from 'mongoose';
-import { IUpdateProduct, IProduct } from './product.interface';
+import { IProduct, IUpdateProduct } from './product.interface';
 import {
   InternalServerErrorException,
   NotFoundException,
@@ -22,10 +22,10 @@ export class ProductRepository {
     }
   }
 
-  async getProductById(id: string) {
+  async getProductById(id: string):Promise<IProduct> {
     let product;
-    try {
-      product = await this.productModel.findById({ _id: id }).exec();
+    try { 
+      product = await this.productModel.findById({ _id: id });
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
@@ -43,8 +43,7 @@ export class ProductRepository {
       product = await this.productModel
         .findOneAndUpdate({ _id: updateProduct._id }, updateProduct, {
           new: true,
-        })
-        .exec();
+        });
     } catch (error) {
       throw new InternalServerErrorException(error);
     }
@@ -57,7 +56,7 @@ export class ProductRepository {
   }
 
   async deleteProduct(id: string): Promise<boolean> {
-    const product = await this.productModel.findByIdAndDelete(id).exec();
+    const product = await this.productModel.findByIdAndDelete(id);
     if (!product) {
       throw new NotFoundException('Product not found');
     }
