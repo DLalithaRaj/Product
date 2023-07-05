@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Product, ProductSchema } from './product.model';
+import { Product /*ProductSchema*/ } from './product.model';
 import { IProduct } from '../product.interface';
 
 describe('ProductSchema', () => {
@@ -28,6 +28,5 @@ describe('ProductSchema', () => {
     it('should have the required fields', () => {
       //test
     });
-
   });
 });

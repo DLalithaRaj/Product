@@ -22,6 +22,10 @@ export class ProductRepository {
     }
   }
 
+  getAll() {
+    return this.productModel.find();
+  }
+
   async getProductById(id: string) {
     let product;
     try {

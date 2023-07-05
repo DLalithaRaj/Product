@@ -114,6 +114,7 @@ describe('ProductController', () => {
   describe('delete product', () => {
     it('delete product with id', async () => {
       const id = '1387219712wer387236';
+      // eslint-disable-next-line max-len
       const outputDeleteProduct = `Product with id ${id} has been deleted successfully`;
       jest
         .spyOn(productService, 'deleteProduct')

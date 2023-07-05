@@ -26,14 +26,14 @@ export class ProductController {
     return this.productService.findAll();
   }
   @Get(':id')
-  findOne(@Param('id') id:string) {
+  findOne(@Param('id') id: string) {
     return this.productService.getProductById(id);
   }
   @Patch(':id')
-  updateProduct(@Body() body:IUpdateProduct, @Param('id') id: string) {
+  updateProduct(@Body() body: IUpdateProduct, @Param('id') id: string) {
     return this.productService.updateProduct({
       ...body,
-      _id: id
+      _id: id,
     });
   }
   @Delete(':id')
