@@ -12,17 +12,14 @@ export class ProductService {
   }
 
   findAll() {
-    return `This action returns all product`;
+    return this.productRepository.getAll();
   }
 
   async getProductById(id: string): Promise<IProduct> {
     return await this.productRepository.getProductById(id);
   }
 
-
-  async updateProduct(
-    updateProductDto: IUpdateProduct,
-  ): Promise<IProduct> {
+  async updateProduct(updateProductDto: IUpdateProduct): Promise<IProduct> {
     return await this.productRepository.updateProduct(updateProductDto);
   }
 

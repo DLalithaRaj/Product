@@ -7,6 +7,11 @@ import { ProductService } from '../product.service';
 export class ProductResolver {
   constructor(private productService: ProductService) {}
 
+  @Query(() => [ProductOutput])
+  getAll() {
+    return this.productService.findAll();
+  }
+
   @Query(() => ProductOutput)
   async getProduct(@Args('id') id: string) {
     return this.productService.getProductById(id);
